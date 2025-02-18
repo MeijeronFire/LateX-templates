@@ -1,0 +1,52 @@
+\documentclass{article}
+
+
+\usepackage{newspaper-mod}
+\date{\today}
+\currentvolume{1}
+\currentissue{1}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[labelformat=empty]{caption}
+
+\usepackage{picinpar}
+%uasage of picinpar:
+%\begin{window}[1,l,\includegraphics{},caption]xxxxx\end{window}
+
+%%%%%%%%%  Front matter   %%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\headline{\huge{BREAKING: SOMETHING} \\ \large{NO IDEA WHAT TO SAY HERE BUT YOU COULD}}
+
+\begin{multicols}{2}
+
+\large{
+	\lipsum[1-3]
+}
+
+%\begin{figure}[H]
+%\includegraphics[width=\linewidth]{nato.jpg}
+%\caption{\textit{NATO troops practicing today}}
+%\end{figure}
+
+\closearticle
+\vspace{2cm}
+\byline{Something I think}{Someone}
+\large{
+	\lipsum[2-2]
+}
+
+%\begin{figure}[H]
+%\includegraphics[width=\linewidth]{middle east.jpg}
+%\caption{\textit{what am I even looking at?}}
+%\end{figure}
+
+\closearticle
+\end{multicols}
+
+\end{document}

@@ -1,0 +1,44 @@
+\documentclass[]{article}
+
+
+\date{\today}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[labelformat=empty]{caption}
+
+\usepackage{picinpar}
+
+\usepackage{newspaper-mod}
+
+%uasage of picinpar:
+%\begin{window}[1,l,\includegraphics{},caption]xxxxx\end{window}
+
+%%%%%%%%%  Front matter   %%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\headline{\huge{xao shang hao}}
+
+\begin{multicols}{2}
+	\lipsum{1}
+
+\closearticle
+	\byline{\Large{Abcde}}{hijkl mnopqrt}
+{
+	\lipsum{2}
+}
+
+%\begin{figure}[H]
+%\includegraphics[width=\linewidth]{turkey.png}
+%\caption{\textit{Where I'll go!}}
+%\end{figure}
+\closearticle
+\end{multicols}
+
+\end{document}

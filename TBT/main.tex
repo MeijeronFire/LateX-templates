@@ -1,0 +1,60 @@
+\documentclass{article}
+
+
+\usepackage{newspaper}
+\usepackage{tikz}
+\date{\today}
+\currentvolume{1}
+\currentissue{1}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{letterspace}
+\usepackage{float}
+\usepackage[labelformat=empty]{caption}
+
+\usepackage{picinpar}
+%uasage of picinpar:
+%\begin{window}[1,l,\includegraphics{},caption]xxxxx\end{window}
+
+%%%%%%%%%  Front matter   %%%%%%%%%%
+
+\SetPaperName{Times}
+
+%% The name used in the running header after
+%% the first page
+\SetHeaderName{Times}
+
+\begin{document}
+\maketitle
+
+\headline{\huge{BREAKING: SOMETHING HAPPENED\\
+OH AND THIS TOO}}
+
+\begin{multicols}{3}
+		\headline{\LARGE Russia}
+	\textbf{\lipsum[1]}
+
+%\begin{figure}[H]
+%\includegraphics[width=\linewidth]{territory.png}
+%\caption{\textit{Ukrainian Military Advance}}
+%\end{figure}
+
+\lipsum{1}
+
+\headline{\LARGE WAIT THIS AS WELL}
+	\lipsum{5-10}
+
+%\begin{figure}[H]
+%\includegraphics[width=\linewidth]{protests.jpg}
+%\caption{\textit{violence in South America}}
+%\end{figure}
+
+
+\byline{I can't take it anymore}{John Cena}
+	\lipsum{15-20}
+
+\end{multicols}
+
+\end{document}

@@ -1,0 +1,134 @@
+%%%	Matthew Allen
+%%%	January 14, 2007
+%%%
+%%%	This package provides a newspaper style heading
+%%%	for the standard Article class.  The default plain
+%%%	page style is redefined to accomodate headings 
+%%%	at the top of all subsequent pages.
+%%%
+%%%	a good idea to use with this package is
+%%%	the multicols package and the picinpar package
+%%%
+%%%	
+
+%******* 	Identification   *****
+\ProvidesPackage{newspaper}
+\NeedsTeXFormat{LaTeX2e}
+
+%******* 	Declaration of options *****
+
+% no options at this time
+
+%******* 	Execution of options   *****
+
+%****** 	Package Loading   *****
+
+%******		main code *****
+
+%define font for page title
+
+%%%%%%%%%%% Define Text Dimensions  %%%%%%%
+
+\setlength\topmargin{-48pt} 		% article default = -58pt
+\setlength\headheight{0pt}  		% article default = 12pt
+\setlength\headsep{34pt}		% article default = 25pt
+\setlength\marginparwidth{-20pt}	% article default = 121pt
+\setlength\textwidth{7.0in}		% article default = 418pt
+\setlength\textheight{9.5in}		% article default = 296pt
+\setlength\oddsidemargin{-30pt}
+
+%%%% counters for volume and number %%%%
+
+\newcounter{volume}
+\newcommand\currentvolume[1]{\setcounter{volume}{#1}}
+\newcounter{issue}
+\newcommand\currentissue[1]{\setcounter{issue}{#1}}
+
+%%%% set internal variables %%%%
+
+\def\@papername{ПРАВДА}
+\def\@headername{ПРАВДА}  % because of the yfonts you may need both papername and headername
+\def\@papersub{ЕЖЕДНЕВНАЯ РАБОЧАЯ ГАЗЕТА}
+\def\@paperlocation{Washington DC}
+\def\@writers{Otto Crawford}
+\def\@paperprice{ЦЕНА: 10 коп.}
+
+\newcommand\SetPaperName[1]{%
+	\def\@papername{#1}}
+\newcommand\SetHeaderName[1]{%
+	\def\@headername{#1}}
+\newcommand\SetPaperLocation[1]{%
+	\def\@paperlocation{#1}}
+\newcommand\SetPaperSlogan[1]{%
+	\def\@paperslogan{#1}}
+\newcommand\SetPaperPrice[1]{%
+	\def\@paperprice{#1}}
+
+
+%%%%%%%%%%% Redefine \maketitle     %%%%%%%
+
+\renewcommand{\maketitle}{\thispagestyle{empty}
+\vspace*{-40pt}
+
+{\resizebox{0.4\linewidth}{!}{\@papername}}
+\hfill 
+\fbox{\begin{minipage}{25em}
+\begin{multicols}{2}
+	{\fontsize{2}{2}\selectfont
+	{\largeГодъ изданiя первый}
+
+1) Рукописи присылаемыя въ редакцiю «Правды», должиы быть написаны по возможиости чет ко. обязательно на одной сторонф лнста
+
+2) Прииятыя статьи въ случаВ иадобности сокрв-щаются и исправляются. Непринятыя сохраняются ие болве 1-го м8сяца и возвращаются по почтв лишь по получеи!и марокъ на почтовые расходы
+
+3) Непринятыя мелкя рукопнси и стихотворе-ия не возвращаются По поводу ихъ редакшя ни вЪ какую переписку не вступаетъ.
+
+4) При запросахъ въ редакцию слФдуетъ прила. гать марку ка отвфтъ
+
+5) Премъ въ редакщи отъ -6 до 8 чес. веч.
+	}
+\end{multicols}
+\end{minipage}} \\
+\vspace*{-7ex}
+\hspace{4em}{\small\@papersub} \\
+
+\begin{center}
+% \vspace*{0.2in}
+\rlap{\rule[-2.5ex]{\linewidth}{1mm}}
+\rule[0pt]{\textwidth}{0.5pt}\\
+
+{\small {No.1}}\hfill {\footnotesizeСуббота, 9 марта} \hfill {\small{\@paperprice}}\\
+\vspace*{0.5ex}
+\rlap{\rule[2ex]{\textwidth}{0.5pt}}
+\vspace*{-2ex}
+\rlap{\rule[1.8ex]{\textwidth}{1mm}}
+	\vspace*{-4ex}
+\end{center}
+\pagestyle{plain}
+}
+
+%%%%%%%   redefine plain page style  %%%%%%%
+\renewcommand{\ps@plain}{%
+		\renewcommand\@oddfoot{}%					% empty recto footer
+		\let\@evenfoot\@oddfoot						% empty verso footer
+		\renewcommand\@evenhead
+			{\parbox{\textwidth}{\vspace*{4pt}
+			{\small VOL.\MakeUppercase{\roman{volume}}\ldots No.\arabic{issue}}\hfill\normalfont\textbf{\@headername}\quad\MakeUppercase{\it\@date}\hfill\textrm{\thepage}\\
+			\rule{\textwidth}{0.5pt}
+			\vspace*{12pt}}}%
+		\let\@oddhead\@evenhead}
+		
+
+%%%%%%%%%%%  Headline (with byline) command  %%%%%%%%%
+
+\newcommand\headline[1]{\begin{center} #1\\ %
+			\rule[3pt]{0.4\hsize}{0.5pt}\\ \end{center} \par}
+\newcommand\byline[2]{\begin{center} #1 \\%
+			{\footnotesize\bf By \MakeUppercase{#2}} \\ %
+			\rule[3pt]{0.4\hsize}{0.5pt}\\ \end{center} \par}
+\newcommand\closearticle{{\begin{center}\rule[6pt]{\hsize}{1pt}\vspace*{-16pt}
+			\rule{\hsize}{0.5pt}\end{center}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%% End of Package   %%%%%%%%%%%%%%%
